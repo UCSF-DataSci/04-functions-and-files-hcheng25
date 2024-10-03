@@ -15,9 +15,9 @@ Task: Generate the Fibonacci numbers less than 100 and write them to `fibonacci_
 """
 import argparse
 
-parser = argparse.ArgumentParser()
-parser.add_argument('-u','--upper')
-parser.add_argument('-o', '--output')
+parser = argparse.ArgumentParser(description = 'Generate a Fibonacci sequence, stopping at a specified upper limit, and write to a specified output file')
+parser.add_argument('-u','--upper', help = "upper limit of sequence")
+parser.add_argument('-o', '--output', help = 'output file')
 args = parser.parse_args()
 
 def fibonacci(upper):
