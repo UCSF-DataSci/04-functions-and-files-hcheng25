@@ -10,5 +10,28 @@ Write a program that takes a number as an argument, finds the *Fibonacci* number
 
 Task: Find the largest prime Fibonacci number less that 50000
 """
+import fibonacci
+import argparse
 
-# You're on your own for this one. Good luck!
+parser = argparse.ArgumentParser()
+parser.add_argument('-u','--upper')
+args = parser.parse_args()
+
+def prime(number):
+	prime_flag = True
+	# check all factors from 2 through number-1
+	for i in range(2,number-1):
+		# prime_flag is set false if a factor is found, otherwise remains true
+		if number%i == 0:
+			prime_flag = False
+	return prime_flag
+
+if __name__ == "__main__":
+	args.upper = int(args.upper)
+	# generate sequence of numbers to check
+	check_prime = fibonacci.fibonacci(args.upper)
+	for i in range(1, len(check_prime)):
+		# check starting from end of list i.e. largest number
+		if prime(check_prime[-i]) == True:
+			print(check_prime[-i])
+			break
